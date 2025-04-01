@@ -3,7 +3,8 @@ const APIFeatures = require("../utils/apiFeatures");
 const AppError = require("../utils/appError");
 const Item = require("../models/itemsModel");
 const categoryModel = require("../models/categoryModel");
-
+const upload = require("./uploadController"); 
+const mongoose = require("mongoose");
 
 exports.getAllItem = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Item.find(), req.query)
@@ -20,27 +21,32 @@ exports.getAllItem = catchAsync(async (req, res, next) => {
     results: item.length,
   });
 });
-exports.createItem = catchAsync(async (req, res, next) => {
-  const { category, ...rest } = req.body;
-  const categoryExists = await categoryModel.findOne({ name: category });
-  console.log(categoryExists);
-  if (!categoryExists) {
-    return next(new AppError("Category not found", 404));
-  }
+exports.createItem = [
+  upload.single("image"),
+  catchAsync(async (req, res, next) => {
+    const { category, ...rest } = req.body;
+    const categoryExists = await categoryModel.findOne({ name: category });
+    console.log(categoryExists);
+    if (!categoryExists) {
+      return next(new AppError("Category not found", 404));
+    }
+    const imagePath = req.file ? req.file.path : null;
 
-  const categoryId = categoryExists._id;
-  const newItem = await Item.create({
-    ...req.body,
-    category: categoryId,
-  });
+    const categoryId = categoryExists._id;
+    const newItem = await Item.create({
+      ...req.body,
+      category: categoryId,
+      image: imagePath,
+    });
 
-  res.status(201).json({
-    status: "success",
-    data: {
-      data: newItem,
-    },
-  });
-});
+    res.status(201).json({
+      status: "success",
+      data: {
+        data: newItem,
+      },
+    });
+  }),
+];
 exports.deleteItem = catchAsync(async (req, res, next) => {
   const item = await Item.findByIdAndDelete(req.params.id);
   if (!item) {
