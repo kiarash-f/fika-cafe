@@ -10,7 +10,6 @@ const itemSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: [true, "Item must have a description"],
   },
   price: {
     type: Number,
@@ -31,16 +30,7 @@ const itemSchema = new mongoose.Schema({
     default: true,
   },
 });
-itemSchema.pre('save', async function (next) {
-  if (typeof this.category === 'string') {
-    const category = await Category.findOne({ name: this.category });
-    if (!category) {
-      return next(new Error(`Category '${this.category}' not found`));
-    }
-    this.category = category._id; // Replace string with ObjectId
-  }
-  next();
-});
+
 
 const Item = mongoose.model("Item", itemSchema);
 
