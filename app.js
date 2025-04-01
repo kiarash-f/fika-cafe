@@ -16,7 +16,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 //Routes
-app.use("/api/v1/categories", categoryRouter);
+app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/items", itemRouter);
 
 module.exports = app;
