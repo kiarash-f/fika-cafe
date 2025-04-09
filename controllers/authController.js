@@ -3,12 +3,30 @@ const jwt = require("jsonwebtoken");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
-//signUp
+// exports.getAllUsers = catchAsync(async (req, res, next) => {
+//   const users = await User.find();
+//   console.log("Fetched users:", users); // <-- Add this
+//   res.status(200).json({
+//     status: "success",
+//     result: users.length,
+//     data: {
+//       users,
+//     },
+//   });
+// });
+exports.getUser = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  res.status(200).json({
+    status: "success",
+    data: user,
+  });
+});
 exports.signUp = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
   const newUser = await User.create({ name, email, password, passwordConfirm });
 
-  const token = jwt.sign({ id: User._id }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
   res.status(201).json({

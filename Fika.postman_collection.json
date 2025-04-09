@@ -299,10 +299,26 @@
 			"name": "USER",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "get user",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/user/67f61ee6f2381334c1c108dd",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"67f61ee6f2381334c1c108dd"
+							]
+						}
 					},
 					"response": []
 				},

@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
   active: {
     type: Boolean,
     default: true,
-    select: false,
+    
   },
 });
 userSchema.pre("save", async function (next) {
