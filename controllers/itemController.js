@@ -3,11 +3,11 @@ const APIFeatures = require("../utils/apiFeatures");
 const AppError = require("../utils/appError");
 const Item = require("../models/itemsModel");
 const categoryModel = require("../models/categoryModel");
-const upload = require("./uploadController"); 
+const upload = require("./uploadController");
 const mongoose = require("mongoose");
 
 exports.getAllItem = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(Item.find(), req.query)
+  const features = new APIFeatures(Item.find().populate("category"), req.query)
     .filter()
     .limitFields()
     .paginate()
@@ -38,6 +38,7 @@ exports.createItem = [
       category: categoryId,
       image: imagePath,
     });
+    console.log(newItem);
 
     res.status(201).json({
       status: "success",
