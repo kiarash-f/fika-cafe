@@ -38,7 +38,7 @@ exports.createItem = [
       category: categoryId,
       image: imagePath,
     });
-    console.log(newItem);
+    console.log(imagePath);
 
     res.status(201).json({
       status: "success",
