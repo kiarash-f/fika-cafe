@@ -31,6 +31,11 @@ app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/items", itemRouter);
 app.use("/api/v1/user", userRouter);
 
+app.use((err, req, res, next) => {
+  console.error(err.stack); // log error to console
+  res.status(500).json({ message: err.message, stack: err.stack });
+});
+
 app.use(express.static(path.join(__dirname, "dist")));
 
 app.get("*", (req, res) => {

@@ -1,3 +1,9 @@
 {
+    "disk":[
+        {
+            "name":"fika-disk",
+            "mountTo":"uploads"
+        }
+    ],
     "port":3000
 }
