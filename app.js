@@ -35,6 +35,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack); // log error to console
   res.status(500).json({ message: err.message, stack: err.stack });
 });
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(express.static(path.join(__dirname, "dist")));
 
