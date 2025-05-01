@@ -14,7 +14,16 @@ const app = express();
 
 //Middlewares
 app.use(express.json());
-app.use(cors());
+
+const allowedOrigin = "https://fika.liara.run";
+
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  })
+);
+
 app.use(morgan("dev"));
 
 //Routes
