@@ -69,7 +69,7 @@ function Home() {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className={`fixed top-0 left-0 h-full w-full dark:bg-putty bg-cobalt-blue z-40 transition-all duration-1000 ease-in-out ${
+            className={`fixed top-0 left-0 h-full w-full dark:bg-putty bg-cobalt-blue z-40 transition-all duration-1000 ease-in-out overflow-y-auto ${
               isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >

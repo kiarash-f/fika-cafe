@@ -62,10 +62,10 @@ function Smoothie() {
             >
               <div className="flex min-[200px]:max-[315px]:flex-col min-[200px]:max-[315px]:gap-y-2">
                 <div className="w-24 min-[250px]:max-[315px]:w-full min-[250px]:max-[315px]:mx-auto min-[500px]:w-36">
-                <img
+                  <img
                     src={`https://fika.liara.run/${item.image}`}
                     alt={item.name}
-                    className="w-full rounded-lg rounded-br-none object-center"
+                    className="rounded-lg rounded-br-none object-center"
                   />
                 </div>
                 <div
@@ -92,8 +92,8 @@ function Smoothie() {
       {isOpen && selectedItem && (
         <ItemModal onClose={() => setIsOpen(false)}>
           <div className="flex flex-col min-[500px]:flex-row">
-            <div className="">
-            <img
+            <div className="w-full min-[500px]:w-36">
+              <img
                 src={`https://fika.liara.run/${selectedItem.image}`}
                 alt={selectedItem.name}
                 className="w-full"
