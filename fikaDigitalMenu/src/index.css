@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "farsi-sade";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/font/A-Sade/A-Sade.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "arsoo";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/font/FP_Arsoo/FP_Arsoo.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "yekan";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/font/Far_Yekan/Far_Yekan.ttf") format("truetype");
+}
+
+@theme {
+  --font-arsoo: "arsoo";
+  --font-farsi-sade: "farsi-sade";
+  --font-yekan: "yekan";
+  --color-putty: #cda864;
+  --color-cobalt-blue: #173c81;
+  --color-berkeley-blue: #003262;
+  --color-shade-brown: #2c282e;
+  --color-coffee: #6f4e37;
+  --font-winky-rough: "Winky Rough";
+  --font-exo: "Exo 2"
+}
+
+@layer {
+  .btn {
+    @apply text-neutral-200 px-2 py-2 rounded-md hover:scale-110 transition-all duration-150;
+  }
+
+  .inputTextField {
+    @apply w-full py-1.5 px-4 rounded-xl  border outline-none text-gray-900 border-gray-100 bg-gray-100 hover:border-blue-500 focus:border-blue-500 focus:bg-gray-50 transition-all duration-300 ease-in-out focus:shadow-md focus:shadow-sky-500;
+  }
+  .table-body td {
+    @apply px-4 py-4 text-center;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+@theme {
+  --breakpoint-items: 1150px;
+}
+
+
+/* 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 */
